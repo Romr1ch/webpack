@@ -3,7 +3,7 @@ import { merge } from 'webpack-merge'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import { commonConfig } from './webpack.common'
 
-export default (env: any) =>
+export default (env: object) =>
   merge(commonConfig(env), {
     mode: 'development',
     devtool: 'inline-source-map',
@@ -20,7 +20,5 @@ export default (env: any) =>
         logging: 'none',
       },
     },
-    plugins: [
-      new ReactRefreshWebpackPlugin(),
-    ],
+    plugins: [new ReactRefreshWebpackPlugin()],
   })

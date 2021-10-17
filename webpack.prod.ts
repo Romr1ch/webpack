@@ -2,7 +2,7 @@ import { merge } from 'webpack-merge'
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin'
 import { commonConfig } from './webpack.common'
 
-export default (env: any) =>
+export default (env: object) =>
   merge(commonConfig(env), {
     mode: 'production',
     devtool: 'inline-source-map',
