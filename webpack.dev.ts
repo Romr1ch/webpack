@@ -1,10 +1,10 @@
-const path = require('path')
-const { merge } = require('webpack-merge')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const common = require('./webpack.common')
+import path from 'path'
+import { merge } from 'webpack-merge'
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import { commonConfig } from './webpack.common'
 
-module.exports = (env) =>
-  merge(common(env), {
+export default (env: any) =>
+  merge(commonConfig(env), {
     mode: 'development',
     devtool: 'inline-source-map',
     output: {

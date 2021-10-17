@@ -1,9 +1,9 @@
-const { merge } = require('webpack-merge')
-const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
-const common = require('./webpack.common')
+import { merge } from 'webpack-merge'
+import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin'
+import { commonConfig } from './webpack.common'
 
-module.exports = (env) =>
-  merge(common(env), {
+export default (env: any) =>
+  merge(commonConfig(env), {
     mode: 'production',
     devtool: 'inline-source-map',
     output: {

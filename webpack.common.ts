@@ -1,9 +1,10 @@
-const path = require('path')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import { Configuration } from 'webpack'
+import path from 'path'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-module.exports = ({ dev = false }) => ({
+export const commonConfig = ({ dev = false }: { dev?: boolean }): Configuration => ({
   entry: {
     index: './src/index.tsx',
   },
@@ -22,17 +23,6 @@ module.exports = ({ dev = false }) => ({
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
-      // {
-      //   test: /\.tsx?$/,
-      //   use: [
-      //     {
-      //       loader: 'ts-loader',
-      //       options: {
-      //         transpileOnly: true
-      //       }
-      //     }
-      //   ],
-      // },
       {
         test: /\.css$/,
         use: [dev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'],
@@ -45,7 +35,7 @@ module.exports = ({ dev = false }) => ({
       filename: '[name].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: 'src/index.html',
     }),
   ],
 })
