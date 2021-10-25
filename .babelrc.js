@@ -11,7 +11,27 @@ module.exports = {
   ],
   env: {
     development: {
-      plugins: ['react-refresh/babel'],
+      plugins: [
+        'react-refresh/babel',
+        [
+          'babel-plugin-styled-components',
+          {
+            ssr: false,
+          },
+        ],
+      ],
+    },
+    production: {
+      plugins: [
+        [
+          'babel-plugin-styled-components',
+          {
+            ssr: false,
+            pure: true,
+            displayName: false,
+          },
+        ],
+      ],
     },
   },
 }

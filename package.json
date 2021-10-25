@@ -10,12 +10,14 @@
     "lint": "eslint . --cache --ext .js,.ts,.tsx",
     "lint:fix": "eslint . --cache --ext .js,.ts,.tsx --fix",
     "prettier": "prettier --write .",
-    "stylelint": "stylelint --risd --rd **/*.css",
+    "stylelint": "stylelint --risd --rd src/**/*.{js,ts,tsx}",
     "prepare": "husky install"
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "serve": "^12.0.1",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -28,11 +30,13 @@
     "@types/mini-css-extract-plugin": "^2.4.0",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.15",
     "@types/webpack": "^5.28.0",
     "@types/webpack-dev-server": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.13.3",
     "css-loader": "^6.3.0",
     "css-minimizer-webpack-plugin": "^3.1.1",
     "eslint": "^8.0.1",
@@ -49,6 +53,7 @@
     "style-loader": "^3.3.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
+    "stylelint-processor-styled-components": "^1.10.0",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.4",
     "webpack": "^5.58.2",
@@ -57,11 +62,11 @@
     "webpack-merge": "^5.8.0"
   },
   "lint-staged": {
-    "*.{js,ts,tsx,css}": [
+    "*.{js,ts,tsx}": [
       "eslint --cache --fix",
-      "prettier --write"
+      "prettier --write",
+      "stylelint --risd --rd"
     ],
-    "*.{json,md}": "prettier --write",
-    "*.css": "stylelint --risd --rd"
+    "*.{json,md}": "prettier --write"
   }
 }

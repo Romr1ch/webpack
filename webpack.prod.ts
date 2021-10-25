@@ -5,7 +5,6 @@ import { commonConfig } from './webpack.common'
 export default (env: object) =>
   merge(commonConfig(env), {
     mode: 'production',
-    devtool: 'inline-source-map',
     output: {
       filename: '[name].[contenthash].js',
     },
